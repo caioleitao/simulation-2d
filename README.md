@@ -1,3 +1,4 @@
+
 # Welcome to RoboCIn Simulation 2D
 
 This repository will guide you to install Simulation 2D environment
@@ -56,7 +57,7 @@ This repository will guide you to install Simulation 2D environment
 	    sudo make
 	    sudo make install
 
- 5. **After installation you can run each project part in different termina**l:
+ 5. **After installation you can run each project part in different terminal**:
  
 		ctrl + alt + T
 	    rcssserver
@@ -77,6 +78,22 @@ graph TD
     A-->C(rcsslogplayer)
     A-->D(rcssclient/team)
 ``` 
+
+ 6. **You can download some open source team and try to modify it**:
+
+	[Python Team](https://github.com/kengz/robocup-soccer)
+	[C++ Team](https://github.com/wrighteagle2d/wrighteaglebase)
+
+I couldn`t put the python team to work, but the c++  worked very well, you can download, install and run it:
+
+	git clone https://github.com/wrighteagle2d/wrighteaglebase
+	cd wrighteaglebase
+	make
+	./start.sh (These command will start a team in left side)
+	ctrl + shift + T
+	./start.sh -t [TEAMNAME] (These command will start a team in right side)
+	ctrl + K (These command start the game, have fun!) :)
+
 
 ## Compilation Error
 
