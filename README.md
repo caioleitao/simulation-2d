@@ -4,6 +4,8 @@
 This repository will guide you to install Simulation 2D environment
 
 
+[![RSS 2D](http://img.youtube.com/vi/Ptzv9NF9opM/0.jpg)](https://www.youtube.com/watch?v=Ptzv9NF9opM "Robot Soccer Simulator 2D")
+
 ## Install Dependencies
 
  1. **Install** [Flex](https://github.com/westes/flex) **and** [Bison](https://www.gnu.org/software/bison/ ):
@@ -57,31 +59,42 @@ This repository will guide you to install Simulation 2D environment
 	    sudo make
 	    sudo make install
 
+
+	Tree process:
+	
+	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/flowchartProcess.png)
+
+
  5. **After installation you can run each project part in different terminal**:
  
 		ctrl + alt + T
 	    rcssserver
     
+	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssserver.png)
+
+
 	    ctrl + shift + T
 	    rcssmonitor
+
+	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssmonitor.png)
+
 	    
 	    ctrl + shift + T
 	    rcsslogplayer
-	    
+	
+	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcsslogplayer.png)
+
+
 	    ctrl + shift + T
 	    Run your team code
 
-```mermaid
-graph TD
-    A(rcssserver)
-    A-->B(rcssmonitor)
-    A-->C(rcsslogplayer)
-    A-->D(rcssclient/team)
-``` 
+	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssteam.png)
+
 
  6. **You can download some open source team and try to modify it**:
 
 	[Python Team](https://github.com/kengz/robocup-soccer)
+
 	[C++ Team](https://github.com/wrighteagle2d/wrighteaglebase)
 
 I couldn`t put the python team to work, but the c++  worked very well, you can download, install and run it:
@@ -89,10 +102,10 @@ I couldn`t put the python team to work, but the c++  worked very well, you can d
 	git clone https://github.com/wrighteagle2d/wrighteaglebase
 	cd wrighteaglebase
 	make
-	./start.sh (These command will start a team in left side)
+	./start.sh # These command will start a team in left side
 	ctrl + shift + T
-	./start.sh -t [TEAMNAME] (These command will start a team in right side)
-	ctrl + K (These command start the game, have fun!) :)
+	./start.sh -t [TEAMNAME] # These command will start a team in right side
+	ctrl + K # These command will start the game, have fun! :)
 
 
 ## Compilation Error
