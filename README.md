@@ -8,6 +8,28 @@ This repository will guide you to install Simulation 2D environment
 
 ## Install Dependencies
 
+ 0. You need to install project [libs](https://github.com/robocin/simulation-2d/tree/master/libs). Go to folder and copy
+ libs to your local libs path, and link it.
+ 	
+ 		cd libs/
+		sudo cp librcss* /usr/local/lib/
+
+	Now you need to link it:
+
+		(Open with a text editor in sudo mode)
+		sudo subl /etc/ld.so.conf.d/local.conf # here we used sublime, but you can use gedit or vi
+
+	Write these path:
+	
+		/usr/local/share
+
+	And update your ldconfig:
+
+		sudo ldconfig
+
+	If after each part installation, you have a lib error, try to run the command above again.
+
+
  1. **Install** [Flex](https://github.com/westes/flex) **and** [Bison](https://www.gnu.org/software/bison/ ):
 		
 		sudo apt-get update
@@ -36,8 +58,8 @@ This repository will guide you to install Simulation 2D environment
 	4.1 Install [rcssserver](https://github.com/rcsoccersim/rcssserver):
 		
 		cd rcssserver
-		./bootstrap
-	    ./configure
+		sudo ./bootstrap
+	    sudo ./configure
 	    sudo make
 	    sudo make install
 	    cd ..
@@ -45,8 +67,8 @@ This repository will guide you to install Simulation 2D environment
 	4.2 Install [rcsslogplayer](https://github.com/rcsoccersim/rcsslogplayer)
 
 		cd rcsslogplayer
-		./bootstrap
-	    ./configure
+		sudo ./bootstrap
+	    sudo ./configure
 	    sudo make
 	    sudo make install
 	    cd ..
@@ -54,11 +76,13 @@ This repository will guide you to install Simulation 2D environment
 	4.3 Install [rcssmonitor](https://github.com/rcsoccersim/rcssmonitor)
 	
 		cd rcssmonitor
-		./bootstrap
-	    ./configure
+		sudo ./bootstrap
+	    sudo ./configure
 	    sudo make
 	    sudo make install
 
+
+	If there is any error, try to read [Compilation Error](https://github.com/robocin/simulation-2d#compilation-error), or if doesn´t have, you can open an issue.
 
 	Tree process:
 	
@@ -68,25 +92,25 @@ This repository will guide you to install Simulation 2D environment
  5. **After installation you can run each project part in different terminal**:
  
 		ctrl + alt + T
-	    rcssserver
+	    rcssserver	# if it doesn´t work, try to run as sudo
     
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssserver.png)
 
 
 	    ctrl + shift + T
-	    rcssmonitor
+	    rcssmonitor # if it doesn´t work, try to run as sudo
 
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssmonitor.png)
 
 	    
 	    ctrl + shift + T
-	    rcsslogplayer
+	    rcsslogplayer # if it doesn´t work, try to run as sudo
 	
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcsslogplayer.png)
 
 
 	    ctrl + shift + T
-	    Run your team code
+	    Run your team code (In Item 6: there are two teams projects to download)
 
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssteam.png)
 
@@ -101,7 +125,7 @@ I couldn`t put the python team to work, but the c++  worked very well, you can d
 
 	git clone https://github.com/wrighteagle2d/wrighteaglebase
 	cd wrighteaglebase
-	make
+	sudo make
 	./start.sh # These command will start a team in left side
 	ctrl + shift + T
 	./start.sh -t [TEAMNAME] # These command will start a team in right side
@@ -111,6 +135,10 @@ I couldn`t put the python team to work, but the c++  worked very well, you can d
 ## Compilation Error
 
 If you have any compilation error, open an issue and we will try to help you fixing it.
+
+If you are facing these error:
+
+Try to run the command as **sudo**, or install [autoconfig](https://askubuntu.com/questions/430706/installing-autotools-autoconf/638558) and dh-autoconfig
 
 
 ## Tutorial Authors
