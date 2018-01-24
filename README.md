@@ -19,11 +19,11 @@ This repository will guide you to install Simulation 2D environment
 		(Open with a text editor in sudo mode)
 		sudo subl /etc/ld.so.conf.d/local.conf # here we used sublime, but you can use gedit or vi
 
-	Write these path:
+	Write these path in the file and save it:
 	
 		/usr/local/share
 
-	And update your ldconfig:
+	Update your ldconfig:
 
 		sudo ldconfig
 
@@ -134,12 +134,43 @@ I couldn`t put the python team to work, but the c++  worked very well, you can d
 
 ## Compilation Error
 
-If you have any compilation error, open an issue and we will try to help you fixing it.
-
 If you are facing these error:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/autoConfError.png)
+
+Or these:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/runAsSudo.png?raw=true)
 
 Try to run the command as **sudo**, or install [autoconfig](https://askubuntu.com/questions/430706/installing-autotools-autoconf/638558) and dh-autoconfig
 
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/autoConfSudo.png)
+
+If you have problems with libs, like **librcssclangparser**:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/librcssparser.png)
+
+Or these:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/needToLink.png)
+
+You need to create these file (like says in [item 0](https://github.com/robocin/simulation-2d#install-dependencies) and save it:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/usrLocalShare.png)
+
+Update your ldconfig, and run the command of your installation part (sudo rcssserver ...):
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/sudoLdConfig.png)
+
+
+If you are having the same link error again, like image below, you only need to **sudo ldconfig**, to update ldconf:
+
+![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/trySudoLdConfigAgain.png)
+
+	sudo ldconfig
+
+
+If you have other compilation error, open an issue and we will try to help you fixing it.
 
 ## Tutorial Authors
 
