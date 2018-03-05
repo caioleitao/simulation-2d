@@ -169,7 +169,7 @@ If you are having the same link error again, like image below, you only need to 
 
 	sudo ldconfig
 
-If you have problems to execute ** sudo make ** in paste ** /rcssmonitor ** and the error is:
+If you have problems to execute **sudo make** in paste **/rcssmonitor** and the error is:
 ![alt text](https://github.com/robocin/simulation-2d/blob/master/images/errorImages/sudoMakeMonitor.png)
 
 You execute this line:
