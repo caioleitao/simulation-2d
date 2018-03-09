@@ -45,17 +45,9 @@ This repository will guide you to install Simulation 2D environment
  
 	    sudo apt-get install libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev
 
- 3. **Go to this** [repository](https://github.com/rcsoccersim/) **and clone each part of the environment inside your simulator folder**:
-		
-	    sudo mkdir sim2d
-	    cd sim2d
-	    git clone https://github.com/rcsoccersim/rcssserver
-	    git clone https://github.com/rcsoccersim/rcsslogplayer
-	    git clone https://github.com/rcsoccersim/rcssmonitor
-
- 4. **Install each part of environment**:
+ 3. **Install each part of environment**:
  
-	4.1 Install [rcssserver](https://github.com/rcsoccersim/rcssserver):
+	3.1 Install [rcssserver](https://github.com/rcsoccersim/rcssserver):
 		
 		cd rcssserver
 		sudo ./bootstrap
@@ -64,7 +56,7 @@ This repository will guide you to install Simulation 2D environment
 	    sudo make install
 	    cd ..
 
-	4.2 Install [rcsslogplayer](https://github.com/rcsoccersim/rcsslogplayer)
+	3.2 Install [rcsslogplayer](https://github.com/rcsoccersim/rcsslogplayer)
 
 		cd rcsslogplayer
 		sudo ./bootstrap
@@ -73,7 +65,7 @@ This repository will guide you to install Simulation 2D environment
 	    sudo make install
 	    cd ..
 	
-	4.3 Install [rcssmonitor](https://github.com/rcsoccersim/rcssmonitor)
+	3.3 Install [rcssmonitor](https://github.com/rcsoccersim/rcssmonitor)
 	
 		cd rcssmonitor
 		sudo ./bootstrap
@@ -89,7 +81,7 @@ This repository will guide you to install Simulation 2D environment
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/flowchartProcess.png)
 
 
- 5. **After installation you can run each project part in different terminal**:
+ 4. **After installation you can run each project part in different terminal**:
  
 		ctrl + alt + T
 	    rcssserver	# if it doesn´t work, try to run as sudo
@@ -115,7 +107,7 @@ This repository will guide you to install Simulation 2D environment
 	![alt text](https://github.com/robocin/simulation-2d/blob/master/images/rcssteam.png)
 
 
- 6. **You can download some open source team and try to modify it**:
+ 5. **You can download some open source team and try to modify it**:
 
 	[Python Team](https://github.com/kengz/robocup-soccer)
 
