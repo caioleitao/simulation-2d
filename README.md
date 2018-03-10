@@ -43,7 +43,7 @@ This repository will guide you to install Simulation 2D environment
 
  2. **Install libs to help in building process**:
  
-	    sudo apt-get install libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev
+	    sudo apt-get install libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev libtool
 
  3. **Install each part of environment**:
  
