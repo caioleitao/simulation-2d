@@ -1,8 +1,7 @@
 
 # Welcome to RoboCIn Simulation 2D
 
-This repository will guide you to install Simulation 2D environment
-
+This repository will guide you to install Simulation 2D environment 
 
 [![RSS 2D](http://img.youtube.com/vi/Ptzv9NF9opM/0.jpg)](https://www.youtube.com/watch?v=Ptzv9NF9opM "Robot Soccer Simulator 2D")
 
@@ -169,6 +168,52 @@ You execute this line:
 	sudo apt-get install libxt-dev
 
 If you have other compilation error, open an issue and we will try to help you fixing it.
+
+
+## Run with Docker 
+
+ 0. You need to install [Docker](https://docs.docker.com/install/) and clone this [project](https://github.com/robocin/simulation-2d).
+ 1. Go to simulation-2d folder and build docker image (It will take something like 20 minutes or more, depends of your network speed. Because It´s pulls Ubuntu image and install all dependencies. Don´t change the tree files of this project!). This command only need to run once.
+			
+		docker build . -t "simulator2d:core"
+ 
+ 2.  Now, you need to [create a docker network](https://docs.docker.com/engine/reference/commandline/network_create/), to bypass data between containers in bridge mode. The IP receive the alias of container´s name.
+ 
+		 docker network create mynet
+
+3. Run and have fun! Each command below, need to be run in a different terminal (ctrl+alt+t and ctrl+shift+t)
+	
+	Run the server (Run **twice the command rcssserver**, to create log folder and to work correctly):
+		
+		docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=server --net mynet simulator2d:core
+		
+		rcssserver 
+		rcssserver
+
+	Run the logger
+
+		docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=logplayer --net mynet simulator2d:core
+		rcsslogplayer
+		
+	Click in **Monitor** inside rcsslogplayer window, choose **connect to** and **type**: server, then click in **Ok**.
+
+	Run the monitor
+	
+		docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=monitor --net mynet simulator2d:core 
+
+	Click in **Monitor** inside rcssmonitor window, choose **connect to** and **type**: server, then click in **Ok**.
+		
+	Run your first team:
+
+		docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=team1 --net mynet simulator2d:core 
+		Download your team with clone or wget (need to change ip to connect to server)
+
+	Run your second team: 
+		
+		docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=team2 --net mynet simulator2d:core 
+		Download your team with clone or wget (need to change ip to connect to server)
+
+
 
 ## Tutorial Authors
 
