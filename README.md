@@ -181,7 +181,11 @@ If you have other compilation error, open an issue and we will try to help you f
  
 		 docker network create mynet
 
-3. Run and have fun! Each command below, need to be run in a different terminal (ctrl+alt+t and ctrl+shift+t)
+3. You need to make the Display exportable
+
+		 xhost +local:root
+
+4. Run and have fun! Each command below, need to be run in a different terminal (ctrl+alt+t and ctrl+shift+t)
 	
 	Run the server (Run **twice the command rcssserver**, to create log folder and to work correctly):
 		
