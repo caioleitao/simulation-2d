@@ -45,7 +45,6 @@ RUN ./configure
 RUN make
 RUN make install
 
-
 WORKDIR /root/simulation-2d/rcssserver/libs
 COPY ./libs/* /usr/lib/
 
@@ -53,6 +52,14 @@ RUN apt-get install -qqy x11-apps
 ENV DISPLAY :0
 CMD xeyes
 
+WORKDIR /root/simulation-2d/librcsc-4.1.0
+RUN ./configure 
+RUN make
+RUN make install
+
+WORKDIR /root/simulation-2d/agent2d
+RUN ./configure 
+RUN make
 
 # Set environment variables.
 ENV HOME /root
