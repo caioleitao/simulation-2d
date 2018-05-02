@@ -19,6 +19,7 @@ RUN \
   apt-get install -y software-properties-common && \
   apt-get install -y byobu curl git htop man unzip vim wget python-pip libqt4-dev libxt-dev iputils-ping && \
   rm -rf /var/lib/apt/lists/*
+  apt-get install nano
 
 # When was together, there was an error installing flex and bison
 # So I changed to install separated
@@ -60,6 +61,11 @@ RUN make install
 WORKDIR /root/simulation-2d/agent2d
 RUN ./configure 
 RUN make
+
+WORKDIR /root/simulation-2d/fedit
+RUN ./configure 
+RUN make
+RUN make install
 
 # Set environment variables.
 ENV HOME /root

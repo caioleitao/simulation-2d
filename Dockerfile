@@ -4,6 +4,8 @@
 # This file need to be inside this repository, to copy all lib dependencies: https://github.com/robocin/simulation-2d
 # Build command: docker build . -t "simulator2d:core"
 # Run command: docker run -it --rm -e DISPLAY=${DISPLAY} -e QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix --name=server --net mynet simulator2d:core
+#
+
 
 # Pull base image.
 FROM ubuntu:12.04
@@ -16,34 +18,19 @@ RUN \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
   apt-get install -y byobu curl git htop man unzip vim wget python-pip libqt4-dev libxt-dev iputils-ping && \
-  apt-get install -y libfreetype6-dev libfontconfig1-dev python-gobject-dev libpng-dev gedit && \
-  apt-get install -y flex gcc make automake libtool libboost-all-dev libboost-dbg && \
-  apt-get install -y libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev && \
-  
   rm -rf /var/lib/apt/lists/*
+  apt-get install nano
 
-WORKDIR /root/
-RUN wget "http://ftp.gnu.org/gnu/bison/bison-2.5.1.tar.xz" -O bison-2.5.1.tar.xz
-RUN tar -xvf bison-2.5.1.tar.xz
-WORKDIR /root/bison-2.5.1
-RUN ./configure
-RUN make && make install
-
-WORKDIR /root/
+# When was together, there was an error installing flex and bison
+# So I changed to install separated
+RUN apt-get update && apt-get install -y flex bison gcc make automake libtool libboost-all-dev libboost-dbg
+RUN apt-get install -y libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev 
 RUN mkdir /simulation-2d
 COPY . /root/simulation-2d
 
 WORKDIR /root/simulation-2d/rcssserver
 RUN ./bootstrap
-RUN ./configure
-
-WORKDIR /root/simulation-2d/rcssserver/src
-RUN sed -i -e 's/coach_lang_parser.hpp/coach_lang_parser.h/g' Makefile.am 
-RUN sed -i -e 's/player_command_parser.hpp/player_command_parser.h/g' Makefile.am 
-RUN sed -i -e 's/coach_lang_parser.hpp/coach_lang_parser.h/g' coach_lang_tok.lpp
-RUN sed -i -e 's/player_command_parser.hpp/player_command_parser.h/g' player_command_tok.lpp
-
-WORKDIR /root/simulation-2d/rcssserver/
+RUN ./configure 
 RUN make
 RUN make install
 
@@ -62,9 +49,23 @@ RUN make install
 WORKDIR /root/simulation-2d/rcssserver/libs
 COPY ./libs/* /usr/lib/
 
-RUN apt-get update && apt-get install -qqy x11-apps
+RUN apt-get install -qqy x11-apps
 ENV DISPLAY :0
 CMD xeyes
+
+WORKDIR /root/simulation-2d/librcsc-4.1.0
+RUN ./configure 
+RUN make
+RUN make install
+
+WORKDIR /root/simulation-2d/agent2d
+RUN ./configure 
+RUN make
+
+WORKDIR /root/simulation-2d/fedit
+RUN ./configure 
+RUN make
+RUN make install
 
 # Set environment variables.
 ENV HOME /root
