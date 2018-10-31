@@ -19,7 +19,7 @@ RUN \
   apt-get install -y libfreetype6-dev libfontconfig1-dev python-gobject-dev libpng-dev gedit && \
   apt-get install -y flex gcc make automake libtool libboost-all-dev libboost-dbg && \
   apt-get install -y libaudio-dev libpng-dev libxi-dev libglib2.0-dev libfontconfig-dev libxrender-dev && \
-  
+  apt-get install -y python3 && \
   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
@@ -64,6 +64,15 @@ COPY ./libs/* /usr/lib/
 
 RUN apt-get update && apt-get install -qqy x11-apps
 ENV DISPLAY :0
+
+RUN \
+  wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/libc6_2.19-0ubuntu6.14_amd64.deb && \
+  wget http://security.ubuntu.com/ubuntu/pool/main/g/gcc-5/gcc-5-base_5.4.0-6ubuntu1~16.04.10_amd64.deb && \
+  wget http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-5/libstdc++6_5.4.0-6ubuntu1~16.04.10_amd64.deb && \
+  dpkg -i gcc-5-base_5.4.0-6ubuntu1~16.04.10_amd64.deb && \
+  dpkg -i libc6_2.19-0ubuntu6.14_amd64.deb && \
+  dpkg -i libstdc++6_5.4.0-6ubuntu1~16.04.10_amd64.deb
+
 CMD xeyes
 
 # Set environment variables.
